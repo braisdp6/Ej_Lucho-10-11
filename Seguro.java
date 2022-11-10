@@ -1,42 +1,52 @@
-package EjercicioSeguroCoche;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class Seguro {
-    public static float tarifaBase = 300;
-    public static final int suplemento = 100;
-    public static float importeCoste;
-
-    public static String NombreAsegurado;
-    public static int Edad, AnosCarnet;
-    public static float PrecioCoche;
+    public float tarifaBase = 300;
+    public final int suplemento = 100;
+    public float importeCoste;
+    public String NombreAsegurado;
+    public int Edad, AnosCarnet;
+    public float PrecioCoche;
 
 
     //Getters&Setters
 
-    public static String getNombreAsegurado() {return NombreAsegurado;}
+    public String getNombreAsegurado() {
+        return NombreAsegurado;
+    }
 
-    public static void setNombreAsegurado(String nombreAsegurado) {NombreAsegurado = nombreAsegurado;}
+    public void setNombreAsegurado(String nombreAsegurado) {
+        NombreAsegurado = nombreAsegurado;
+    }
 
-    public static int getEdad() {return Edad;}
+    public int getEdad() {
+        return Edad;
+    }
 
-    public static void setEdad(int edad) {Edad = edad;}
+    public void setEdad(int edad) {
+        Edad = edad;
+    }
 
-    public static int getAnosCarnet() {return AnosCarnet;}
+    public int getAnosCarnet() {
+        return AnosCarnet;
+    }
 
-    public static void setAnosCarnet(int anosCarnet) {AnosCarnet = anosCarnet;}
+    public void setAnosCarnet(int anosCarnet) {
+        AnosCarnet = anosCarnet;
+    }
 
-    public static float getPrecioCoche() {return PrecioCoche;}
+    public float getPrecioCoche() {
+        return PrecioCoche;
+    }
 
-    public static void setPrecioCoche(float precioCoche) {PrecioCoche = precioCoche;}
+    public void setPrecioCoche(float precioCoche) {
+        PrecioCoche = precioCoche;
+    }
 
 
-
-
-
-    public static void seguro()throws IOException{
+    public double seguro() throws IOException {
 
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -50,13 +60,29 @@ public class Seguro {
         System.out.println("Precio del coche: ");
         setPrecioCoche(Float.parseFloat(br.readLine()));
 
-        if (getAnosCarnet()<5 ||  getEdad()<28){ tarifaBase = tarifaBase + suplemento;}
+//aqui meter toda la operacion para saber los datos
+        public double operacion() {
+            double tarifaBase1 = 0;
+            double tarifaBase2 = 0;
+            if (getAnosCarnet() < 5 || getEdad() < 28) {
+                tarifaBase1 = tarifaBase1 + suplemento;
+            }
+            if (getPrecioCoche() > 15000) {
+                tarifaBase2 = tarifaBase2 + importeCoste;
+            }
+            return tarifaBase1+tarifaBase2;
+        }
 
-        importeCoste = tarifaBase + (tarifaBase/100*12);
 
-        if (getPrecioCoche()>15000) { tarifaBase = tarifaBase + importeCoste; }
+        importeCoste = tarifaBase + (tarifaBase / 100 * 12);
 
-        Ver.ver();
+
+        @Override
+        public String toString () {
+            Ver ver1 = new Ver(tarifaBase, "nombreAsegurado");
+            return ver1.ver();
+        }
+
 
     }
 }

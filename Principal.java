@@ -1,9 +1,7 @@
-package EjercicioSeguroCoche;
-
 import java.io.IOException;
 
 public class Principal {
-    public static void main(String[] args)throws IOException {
+    public static void main(String[] args) throws IOException {
 
         Seguro seguro1 = new Seguro();
         Seguro seguro2 = new Seguro();
